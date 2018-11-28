@@ -339,7 +339,7 @@ items:
     hostNetwork: true
     containers:
     - name: tftpd-ipxe
-      image: randomcoww/tftpd_ipxe:20180913.01
+      image: randomcoww/tftpd_ipxe:20181127.01
       args:
       - "--address"
       - 0.0.0.0:69
