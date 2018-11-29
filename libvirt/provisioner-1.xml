@@ -8,22 +8,21 @@
     <kernel>/data/bootstrap/coreos/1883.1.0/coreos_production_pxe.vmlinuz</kernel>
     <initrd>/data/bootstrap/coreos/1883.1.0/coreos_production_pxe_image.cpio.gz</initrd>
     <cmdline>coreos.first_boot=1 coreos.autologin coreos.config.url=http://r.fuzzybunny.io/ignition/provisioner-1.ign console=hvc0 elevator=noop</cmdline>
-    <boot dev='hd'/>
   </os>
   <features>
     <acpi/>
     <apic/>
     <pae/>
+    <vmport state='off'/>
   </features>
   <cpu mode='host-passthrough'>
     <topology sockets='1' cores='2' threads='1'/>
+    <cache level='3' mode='emulate'/>
   </cpu>
-  <clock offset='utc'/>
-  <on_poweroff>destroy</on_poweroff>
-  <on_reboot>restart</on_reboot>
   <on_crash>restart</on_crash>
   <devices>
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <controller type='usb' model='none'/>
     <interface type='direct' trustGuestRxFilters='yes'>
       <source dev='enp1s0f1' mode='bridge'/>
       <model type='virtio-net'/>
