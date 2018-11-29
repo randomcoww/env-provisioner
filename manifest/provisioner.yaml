@@ -150,6 +150,10 @@ items:
       args:
       - kea-dhcp4
       env:
+      - name: NODE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
       - name: NODE_IP
         valueFrom:
           fieldRef:
@@ -215,11 +219,11 @@ items:
                   "parameters": {
                     "high-availability": [
                       {
-                        "this-server-name": "$(NODE_IP)",
+                        "this-server-name": "$(NODE_NAME)",
                         "mode": "hot-standby",
                         "max-unacked-clients": 5,
                         "peers": [
-                          {"name":"192.168.126.217","role":"primary","url":"http://192.168.126.217:58082/"},{"name":"192.168.126.218","role":"standby","url":"http://192.168.126.218:58082/"}
+                          {"name":"provisioner-0","role":"primary","url":"http://192.168.126.217:58082/"},{"name":"provisioner-1","role":"standby","url":"http://192.168.126.218:58082/"}
                         ]
                       }
                     ]
