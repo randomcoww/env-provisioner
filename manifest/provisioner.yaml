@@ -150,10 +150,10 @@ items:
       args:
       - kea-dhcp4
       env:
-      - name: NODE_NAME
+      - name: NODE_IP
         valueFrom:
           fieldRef:
-            fieldPath: spec.nodeName
+            fieldPath: status.hostIP
       - name: KEA_LOCAL_CONFIG
         value: |-
           {
@@ -195,13 +195,13 @@ items:
                 {
                   "name": "ipxe",
                   "test": "not(substring(option[77].hex,0,4) == 'iPXE') and (option[93].hex == 0x0000)",
-                  "next-server": "192.168.126.242",
+                  "next-server": "$(NODE_IP)",
                   "boot-file-name": "/undionly.kpxe"
                 },
                 {
                   "name": "ipxe_efi",
                   "test": "not(substring(option[77].hex,0,4) == 'iPXE') and (option[93].hex == 0x0007)",
-                  "next-server": "192.168.126.242",
+                  "next-server": "$(NODE_IP)",
                   "boot-file-name": "/ipxe.efi"
                 }
               ],
@@ -215,11 +215,11 @@ items:
                   "parameters": {
                     "high-availability": [
                       {
-                        "this-server-name": "$(NODE_NAME)",
+                        "this-server-name": "$(NODE_IP)",
                         "mode": "hot-standby",
                         "max-unacked-clients": 5,
                         "peers": [
-                          {"name":"provisioner-0","role":"primary","url":"http://192.168.126.217:58082/"},{"name":"provisioner-1","role":"standby","url":"http://192.168.126.218:58082/"}
+                          {"name":"192.168.126.217","role":"primary","url":"http://192.168.126.217:58082/"},{"name":"192.168.126.218","role":"standby","url":"http://192.168.126.218:58082/"}
                         ]
                       }
                     ]
