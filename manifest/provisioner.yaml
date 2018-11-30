@@ -237,6 +237,10 @@ items:
                     {
                       "name": "routers",
                       "data": "192.168.62.240"
+                    },
+                    {
+                      "name": "interface-mtu",
+                      "data": "9000"
                     }
                   ],
                   "pools": [
@@ -343,11 +347,7 @@ items:
     hostNetwork: true
     containers:
     - name: tftpd-ipxe
-      image: randomcoww/tftpd_ipxe:20181127.01
-      args:
-      - "--address"
-      - 0.0.0.0:69
-      - "--verbose"
+      image: randomcoww/tftpd_ipxe:20181129.01
 - kind: Pod
   apiVersion: v1
   metadata:
