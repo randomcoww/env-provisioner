@@ -348,6 +348,9 @@ items:
     containers:
     - name: tftpd-ipxe
       image: randomcoww/tftpd_ipxe:20181129.01
+      args:
+      - "--blocksize"
+      - "8968"
 - kind: Pod
   apiVersion: v1
   metadata:
