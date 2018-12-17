@@ -181,11 +181,6 @@ items:
               },
               "option-data": [
                 {
-                  "name": "domain-name-servers",
-                  "data": "9.9.9.9,1.1.1.1",
-                  "csv-format": true
-                },
-                {
                   "name": "domain-name",
                   "data": "host.internal"
                 }
@@ -239,6 +234,11 @@ items:
                       "data": "192.168.62.240"
                     },
                     {
+                      "name": "domain-name-servers",
+                      "data": "9.9.9.9",
+                      "csv-format": true
+                    },
+                    {
                       "name": "interface-mtu",
                       "data": "9000"
                     }
@@ -255,6 +255,11 @@ items:
                     {
                       "name": "routers",
                       "data": "192.168.126.240"
+                    },
+                    {
+                      "name": "domain-name-servers",
+                      "data": "192.168.126.241,9.9.9.9",
+                      "csv-format": true
                     },
                     {
                       "name": "interface-mtu",
@@ -288,6 +293,36 @@ items:
   kind: Pod
   metadata:
     namespace: kube-system
+    name: unbound
+  spec:
+    restartPolicy: Always
+    hostNetwork: true
+    containers:
+    - name: unbound
+      image: randomcoww/unbound:20180913.01
+      env:
+      - name: UNBOUND_LOCAL_CONFIG
+        value: |-
+          server:
+            interface-automatic: yes
+            port: 53
+            interface: 0.0.0.0
+            num-threads: 2
+            do-ip6: no
+            do-udp: yes
+            do-tcp: yes
+            access-control: 0.0.0.0/0 allow
+            do-not-query-localhost: no
+          forward-zone:
+            name: "."
+            forward-tls-upstream: yes
+            forward-addr: 9.9.9.9@853
+          remote-control:
+            control-enable: yes
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    namespace: kube-system
     name: keepalived
   spec:
     restartPolicy: Always
@@ -312,30 +347,12 @@ items:
             strict_mode off
             virtual_router_id 247
             interface eth1
-            track_interface {
-              eth2
-            }
             priority 100
             virtual_ipaddress {
               192.168.126.240 dev eth1
               192.168.62.240 dev eth0
-            }
-          }
-          vrrp_script CHK_matchbox {
-            script "nc -z -w5 localhost 58080"
-            interval 2
-          }
-          vrrp_instance VI_matchbox_store {
-            state BACKUP
-            strict_mode off
-            virtual_router_id 39
-            interface eth1
-            priority 100
-            virtual_ipaddress {
-              192.168.126.242
-            }
-            track_script {
-              CHK_matchbox
+              192.168.126.241 dev eth1
+              192.168.126.242 dev eth1
             }
           }
 - apiVersion: v1
