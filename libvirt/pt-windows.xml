@@ -1,7 +1,7 @@
 <domain type='kvm'>
   <name>pt-windows</name>
-  <memory unit='GiB'>16</memory>
-  <currentMemory unit='GiB'>16</currentMemory>
+  <memory unit='GiB'>8</memory>
+  <currentMemory unit='GiB'>8</currentMemory>
   <memoryBacking>
     <hugepages/>
     <nosharepages/>
