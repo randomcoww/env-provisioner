@@ -5,8 +5,6 @@
   <vcpu placement='static'>6</vcpu>
   <os>
     <type arch='x86_64' machine='pc'>hvm</type>
-    <loader readonly='yes' type='pflash'>/usr/share/OVMF/OVMF_CODE.fd</loader>
-    <nvram template='/usr/share/OVMF/OVMF_VARS.fd'/>
   </os>
   <features>
     <acpi/>
@@ -28,6 +26,10 @@
       <model type='virtio-net'/>
       <boot order='1'/>
     </interface>
+    <interface type='direct' trustGuestRxFilters='yes'>
+      <source dev='br0' mode='bridge'/>
+      <model type='virtio-net'/>
+    </interface>
     <console>
       <target type='virtio'/>
     </console>
@@ -35,10 +37,6 @@
       <target type='virtio' name='com.redhat.spice.0'/>
       <address type='virtio-serial'/>
     </channel>
-    <graphics type='spice' port='20002' listen='127.0.0.1'/>
-    <video>
-      <model type='virtio'/>
-    </video>
     <memballoon model='virtio'>
     </memballoon>
   </devices>

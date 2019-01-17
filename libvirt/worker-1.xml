@@ -26,6 +26,10 @@
       <model type='virtio-net'/>
       <boot order='1'/>
     </interface>
+    <interface type='direct' trustGuestRxFilters='yes'>
+      <source dev='br0' mode='bridge'/>
+      <model type='virtio-net'/>
+    </interface>    
     <console>
       <target type='virtio'/>
     </console>
