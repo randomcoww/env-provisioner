@@ -11,7 +11,7 @@ items:
     hostNetwork: true
     containers:
     - name: nftables
-      image: randomcoww/nftables:20180913.01
+      image: randomcoww/nftables:20190119.01
       securityContext:
         capabilities:
           add:
@@ -123,7 +123,7 @@ items:
     hostNetwork: true
     containers:
     - name: kea-control-agent
-      image: randomcoww/kea:1.4.0-P1
+      image: randomcoww/kea:20190119.01
       args:
       - kea-ctrl-agent
       env:
@@ -146,7 +146,7 @@ items:
         mountPath: "/var/lib/kea"
         readOnly: false
     - name: kea-dhcp4
-      image: randomcoww/kea:1.4.0-P1
+      image: randomcoww/kea:20190119.01
       args:
       - kea-dhcp4
       env:
@@ -299,7 +299,7 @@ items:
     hostNetwork: true
     containers:
     - name: unbound
-      image: randomcoww/unbound:20180913.01
+      image: randomcoww/unbound:20190119.01
       env:
       - name: UNBOUND_LOCAL_CONFIG
         value: |-
@@ -329,7 +329,7 @@ items:
     hostNetwork: true
     containers:
     - name: keepalived
-      image: randomcoww/keepalived:20180913.01
+      image: randomcoww/keepalived:20190119.01
       securityContext:
         capabilities:
           add:
@@ -364,7 +364,7 @@ items:
     hostNetwork: true
     containers:
     - name: tftpd-ipxe
-      image: randomcoww/tftpd_ipxe:20181129.01
+      image: randomcoww/tftpd_ipxe:20190119.01
 - kind: Pod
   apiVersion: v1
   metadata:
@@ -390,7 +390,7 @@ items:
         name: matchbox-data
         readOnly: false
     - name: syncthing
-      image: randomcoww/syncthing:20181125.01
+      image: randomcoww/syncthing:20190119.01
       env:
       - name: NODE_IP
         valueFrom:
