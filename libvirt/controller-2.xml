@@ -22,7 +22,7 @@
     <controller type='usb' model='none'/>
     <interface type='direct' trustGuestRxFilters='yes'>
       <mac address='52:54:00:1a:61:0c'/>
-      <source dev='enp1s0f0' mode='bridge'/>
+      <source dev='int0' mode='bridge'/>
       <model type='virtio-net'/>
       <boot order='1'/>
     </interface>

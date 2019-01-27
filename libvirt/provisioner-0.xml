@@ -28,7 +28,7 @@
       <model type='virtio-net'/>
     </interface>
     <interface type='direct' trustGuestRxFilters='yes'>
-      <source dev='enp1s0f0' mode='bridge'/>
+      <source dev='int0' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <interface type='direct' trustGuestRxFilters='yes'>

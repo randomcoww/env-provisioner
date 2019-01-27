@@ -22,12 +22,12 @@
     <controller type='usb' model='none'/>
     <interface type='direct' trustGuestRxFilters='yes'>
       <mac address='52:54:00:1a:61:1c'/>
-      <source dev='eno1' mode='bridge'/>
+      <source dev='int0' mode='bridge'/>
       <model type='virtio-net'/>
       <boot order='1'/>
     </interface>
     <interface type='direct' trustGuestRxFilters='yes'>
-      <source dev='br0' mode='bridge'/>
+      <source dev='int1' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <console>

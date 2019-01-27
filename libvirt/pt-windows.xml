@@ -72,7 +72,7 @@
     <controller type='scsi' model='virtio-scsi'/>
     <controller type='usb' model='none'/>
     <interface type='direct'>
-      <source dev='eno1' mode='bridge'/>
+      <source dev='int0' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <input type='mouse' bus='virtio'/>
