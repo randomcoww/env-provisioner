@@ -1,4 +1,4 @@
-<domain type='kvm'>
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
   <name>pt-windows</name>
   <memory unit='GiB'>8</memory>
   <currentMemory unit='GiB'>8</currentMemory>
@@ -46,14 +46,14 @@
   <devices>
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='native' discard='unmap'/>
+      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
       <source file='/home/qemu/pt-windows.img'/>
       <target dev='sda' bus='scsi'/>
       <boot order='2'/>
     </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
-      <source file='/home/qemu/Win10_1803_English_x64.iso'/>
+      <source file='/home/qemu/Win10_1809Oct_English_x64.iso'/>
       <target dev='sdb' bus='sata'/>
       <boot order='1'/>
       <readonly/>
@@ -65,24 +65,19 @@
       <readonly/>
     </disk>
     <disk type='file' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='native' discard='unmap'/>
+      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
       <source file='/home/qemu/pt-windows-data.img'/>
       <target dev='sdd' bus='scsi'/>
     </disk>
     <controller type='scsi' model='virtio-scsi'/>
-    <controller type='usb' model='none'/>
+    <controller type='usb' model='nec-xhci'/>
     <interface type='direct'>
       <source dev='int0' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <input type='mouse' bus='virtio'/>
     <input type='keyboard' bus='virtio'/>
-    <graphics type='spice'>
-      <listen type='socket'/>
-    </graphics>
-    <video>
-      <model type='virtio'/>
-    </video>
+    <sound model='usb'/>
     <hostdev mode='subsystem' type='pci' managed='yes'>
       <driver name='vfio'/>
       <source>
@@ -99,4 +94,17 @@
     </hostdev>
     <memballoon model='none'/>
   </devices>
+  <qemu:commandline>
+    <qemu:arg value='-object'/>
+    <qemu:arg value='input-linux,id=mouse1,evdev=/dev/input/by-id/usb-Logitech_USB_Receiver-event-mouse'/>
+    <qemu:arg value='-object'/>
+    <qemu:arg value='input-linux,id=kbd1,evdev=/dev/input/by-id/usb-Cooler_Master_Technology_Inc._MasterKeys_S-event-kbd,grab_all=on,repeat=on'/>
+    <qemu:env name='QEMU_AUDIO_DRV' value='pa'/>
+    <qemu:env name='QEMU_AUDIO_DAC_FIXED_FREQ' value='192000'/>
+    <qemu:env name='QEMU_AUDIO_DAC_TRY_POLL' value='0'/>
+    <qemu:env name='QEMU_AUDIO_ADC_FIXED_FREQ' value='192000'/>
+    <qemu:env name='QEMU_AUDIO_ADC_TRY_POLL' value='0'/>
+    <qemu:env name='QEMU_AUDIO_TIMER_PERIOD' value='1000'/>
+    <qemu:env name='QEMU_PA_SERVER' value='/run/user/1000/pulse/native'/>
+  </qemu:commandline>
 </domain>
