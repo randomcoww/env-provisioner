@@ -65,13 +65,6 @@ items:
           }
 
           table ip nat {
-            set tcp_dnat {
-              type inet_service; flags interval;
-              elements = {
-                2222
-              }
-            }
-
             chain prerouting {
               type nat hook prerouting priority 0; policy accept;
             }
