@@ -24,7 +24,7 @@
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <controller type='usb' model='none'/>
     <interface type='direct' trustGuestRxFilters='yes'>
-      <source dev='enp1s0f1' mode='bridge'/>
+      <source dev='env90' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <interface type='direct' trustGuestRxFilters='yes'>
@@ -33,7 +33,7 @@
     </interface>
     <interface type='direct' trustGuestRxFilters='yes'>
       <mac address='52:54:00:63:6e:b1'/>
-      <source dev='eno2' mode='bridge'/>
+      <source dev='env30' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <console>
