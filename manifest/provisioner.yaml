@@ -206,10 +206,6 @@ items:
                       "name": "domain-name-servers",
                       "data": "9.9.9.9",
                       "csv-format": true
-                    },
-                    {
-                      "name": "interface-mtu",
-                      "data": "9000"
                     }
                   ],
                   "pools": [
