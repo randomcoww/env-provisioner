@@ -1,0 +1,7 @@
+apiVersion: edgefs.rook.io/v1alpha1
+kind: NFS
+metadata:
+  name: nfsservice
+  namespace: rook-edgefs
+spec:
+  instances: 1
