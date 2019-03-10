@@ -36,6 +36,11 @@
       <source dev='env30' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
+    <interface type='direct' trustGuestRxFilters='yes'>
+      <mac address='52:54:00:63:6e:b3'/>
+      <source dev='env30' mode='bridge'/>
+      <model type='virtio-net'/>
+    </interface>
     <console>
       <target type='virtio'/>
     </console>
