@@ -24,11 +24,15 @@
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <controller type='usb' model='none'/>
     <interface type='direct' trustGuestRxFilters='yes'>
+      <source dev='int0' mode='bridge'/>
+      <model type='virtio-net'/>
+    </interface>
+    <interface type='direct' trustGuestRxFilters='yes'>
       <source dev='env90' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <interface type='direct' trustGuestRxFilters='yes'>
-      <source dev='int0' mode='bridge'/>
+      <source dev='env60' mode='bridge'/>
       <model type='virtio-net'/>
     </interface>
     <interface type='direct' trustGuestRxFilters='yes'>
