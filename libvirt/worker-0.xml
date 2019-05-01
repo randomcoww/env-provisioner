@@ -1,7 +1,7 @@
 <domain type='kvm'>
   <name>worker-0</name>
-  <memory unit='GiB'>8</memory>
-  <currentMemory unit='GiB'>8</currentMemory>
+  <memory unit='GiB'>12</memory>
+  <currentMemory unit='GiB'>12</currentMemory>
   <vcpu placement='static'>6</vcpu>
   <os>
     <type arch='x86_64' machine='pc'>hvm</type>
@@ -38,5 +38,8 @@
       <address type='virtio-serial'/>
     </channel>
     <memballoon model='virtio'/>
+    <rng model='virtio'>
+      <backend model='random'>/dev/urandom</backend>
+    </rng>
   </devices>
 </domain>
