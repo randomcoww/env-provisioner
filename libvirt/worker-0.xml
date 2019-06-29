@@ -23,9 +23,9 @@
   <devices>
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <controller type='usb' model='none'/>
-    <disk type='file' device='disk'>
+    <disk type='block' device='disk'>
       <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
-      <source file='/data/gluster/glustervol.img'/>
+      <source dev='/dev/zvol/pv/cache'/>
       <target dev='sda' bus='scsi'/>
     </disk>
     <interface type='direct' trustGuestRxFilters='yes'>
