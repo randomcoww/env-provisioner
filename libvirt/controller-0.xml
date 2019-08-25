@@ -7,7 +7,7 @@
     <type arch='x86_64' machine='pc'>hvm</type>
     <kernel>/var/lib/tftpboot/coreos_production_pxe.vmlinuz</kernel>
     <initrd>/var/lib/tftpboot/coreos_production_pxe_image.cpio.gz</initrd>
-    <cmdline>coreos.first_boot=1 coreos.config.url=http://config.fuzzybunny.internal/ignition?ign=controller-0 console=hvc0 coreos.autologin elevator=noop</cmdline>
+    <cmdline>coreos.first_boot=1 coreos.config.url=http://192.168.126.242/ignition?ign=controller-0 console=hvc0 coreos.autologin elevator=noop</cmdline>
   </os>
   <features>
     <acpi/>
