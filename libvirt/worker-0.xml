@@ -28,45 +28,11 @@
       <source dev='/dev/disk/by-path/pci-0000:00:17.0-ata-2'/>
       <target dev='sda' bus='scsi'/>
     </disk>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
-      <source dev='/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048000a2973f-phy12-lun-0'/>
-      <target dev='sdb' bus='scsi'/>
-    </disk>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
-      <source dev='/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048000a2973f-phy13-lun-0'/>
-      <target dev='sdc' bus='scsi'/>
-    </disk>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
-      <source dev='/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048000a2973f-phy14-lun-0'/>
-      <target dev='sdd' bus='scsi'/>
-    </disk>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
-      <source dev='/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048000a2973f-phy15-lun-0'/>
-      <target dev='sde' bus='scsi'/>
-    </disk>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
-      <source dev='/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048000a2973f-phy16-lun-0'/>
-      <target dev='sdf' bus='scsi'/>
-    </disk>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
-      <source dev='/dev/disk/by-path/pci-0000:03:00.0-sas-exp0x5003048000a2973f-phy17-lun-0'/>
-      <target dev='sdg' bus='scsi'/>
-    </disk>
     <interface type='direct' trustGuestRxFilters='yes'>
       <mac address='52:54:00:1a:61:1a'/>
       <source dev='int0' mode='bridge'/>
       <model type='virtio-net'/>
       <boot order='1'/>
-    </interface>
-    <interface type='direct' trustGuestRxFilters='yes'>
-      <source dev='int1' mode='bridge'/>
-      <model type='virtio-net'/>
     </interface>
     <console>
       <target type='virtio'/>
